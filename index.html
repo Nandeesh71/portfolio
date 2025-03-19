@@ -1,0 +1,713 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nandeesh71</title>
+    <style>
+        /* Apple-inspired design system */
+        :root {
+            --apple-white: #ffffff;
+            --apple-black: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #f5f5f7;
+            --apple-blue: #0071e3;
+            --font-apple: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-apple);
+            color: var(--apple-black);
+            background-color: var(--apple-white);
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+        }
+
+        /* Header styling */
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 44px;
+        }
+
+        .nav-logo {
+            font-size: 21px;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links a {
+            color: var(--apple-black);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--apple-blue);
+        }
+
+        /* Hero section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: 44px;
+            background-color: var(--apple-light-gray);
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.005em;
+            margin-bottom: 8px;
+        }
+
+        .hero h2 {
+            font-size: 27px;
+            font-weight: 400;
+            color: var(--apple-gray);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--apple-blue);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 980px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #8acdf1;
+        }
+
+        /* Work section */
+/* Section Title */
+.section-title {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 600;
+    margin: 100px 0 60px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+/* Work Grid */
+.work-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Work Item */
+.work-item {
+    background-color: var(--apple-light-gray);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+/* Light Pop Effect on Hover */
+.work-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.747);
+}
+
+/* Slight Pop Effect on Click */
+.work-item:active {
+    transform: scale(0.98);
+}
+
+/* Work Image */
+.work-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+
+.work-item:hover .work-image {
+    filter: brightness(1.1);
+    transform: scale(1.03);
+}
+
+/* Work Content */
+.work-content {
+    padding: 30px;
+    text-align: center;
+}
+
+/* Work Content Heading */
+.work-content h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--apple-dark-gray);
+}
+
+/* Work Content Paragraph */
+.work-content p {
+    color: var(--apple-gray);
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+/* View Project Button */
+.work-link {
+    color: rgb(255, 255, 255);
+    background: var(--apple-blue);
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+/* Soft Glow on Hover */
+.work-link:hover {
+    background: var(--apple-dark-blue);
+    transform: scale(1.08);
+    box-shadow: 0 5px 15px rgba(44, 100, 231, 0.3);
+}
+
+/* Subtle Click Effect */
+.work-link:active {
+    transform: scale(0.95);
+}
+
+/* Arrow Animation */
+.work-link::after {
+    content: "→";
+    margin-left: 6px;
+    transition: transform 0.3s ease;
+}
+
+.work-link:hover::after {
+    transform: translateX(6px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+        /* About section */
+        .about {
+            max-width: 800px;
+            margin: 120px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 30px;
+        }
+
+        .about h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 19px;
+            line-height: 1.5;
+            color: var(--apple-gray);
+            margin-bottom: 20px;
+        }
+
+        /* Skills section */
+        .skills {
+    background-color: var(--apple-light-gray);
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 50px; /* Space between items */
+    max-width: 800px;
+    margin: 50px auto;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease forwards;
+}
+
+.skill-icon {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #0071e3, #005bb5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.15);
+    box-shadow: 0 8px 16px rgba(0, 113, 227, 0.3);
+}
+
+.skill-name {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive - Adjust for smaller screens */
+@media (max-width: 768px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+        gap: 30px;
+    }
+}
+
+        /* Contact section */
+        .contact {
+            max-width: 600px;
+            margin: 120px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .contact p {
+            font-size: 19px;
+            line-height: 1.5;
+            color: var(--apple-gray);
+            margin-bottom: 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .contact-link {
+            color: var(--apple-black);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 8px 16px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background-color: var(--apple-white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-link:hover {
+            background-color: var(--apple-blue);
+            color: var(--apple-white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 113, 227, 0.2);
+        }
+
+        .contact-link:hover .contact-icon {
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--apple-light-gray);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--apple-gray);
+        }
+
+        /* Enhanced Animation effects */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes scaleUp {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                transform: translateX(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .fade-up {
+            animation: fadeUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        
+        .work-item {
+            opacity: 0;
+            animation: scaleUp 0.6s ease forwards;
+        }
+        
+        .skill-item {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .contact-link {
+            opacity: 0;
+            animation: slideInRight
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero h2 {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+                margin: 80px 0 40px;
+            }
+            
+            .about h2 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header navigation -->
+    <header>
+        <nav>
+            <div class="nav-logo">Nandeesh S </div>
+            <div class="nav-links">
+                <a href="#work">Work</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <h1 class="fade-up">Hello, I'm Nandeesh S</h1>
+        <h2 class="fade-up">An Artificial Intelligence (AI) & Machine Learning (ML) engineer</h2>
+        <a href="#work" class="cta-button fade-up">View My Work</a>
+    </section>
+
+    <!-- Work portfolio section -->
+    <section id="work">
+        <h2 class="section-title">My Work</h2>
+        <div class="work-grid">
+            <!-- Project 1 -->
+            <div class="work-item">
+                <img src="https://th.bing.com/th/id/R.98337310ab3ffa7778e3b2f9ace2cc4d?rik=%2bDd1SWGkw3y1hg&riu=http%3a%2f%2fwww.atcrux.com%2fwp-content%2fuploads%2f2012%2f10%2fSensitive-vision-for-blind_1.jpg&ehk=YGXljXwgR7AU%2b%2f8Xd%2bVSrLKYurVXQF6ztW0mMcJOpvo%3d&risl=&pid=ImgRaw&r=0/400/320" alt="Project 1" class="work-image">
+                <div class="work-content">
+                    <h3>Echo Vision – Smart Assistive Technology for the Visually Impaired</h3>
+                    <p>Echo Vision is an AI-powered assistive device designed to empower visually impaired individuals with real-time navigation, facial recognition, and text-to-speech technology. By integrating depth cameras, health monitoring sensors, and AI/ML models, the system ensures safety, accessibility, and independence. Key features include obstacle detection, SOS emergency alerts, and multi-language support, all delivered through a lightweight, cloud-connected design. This innovative solution addresses a critical need, offering a practical and transformative experience for users to navigate the world with confidence.</p>
+                    <a href="https://github.com/nandeesh71" class="work-link">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="work-item">
+                <img src="https://repository-images.githubusercontent.com/474572546/d2b783f4-a08f-4b2a-b26b-4989404f9304" alt="Project 2" class="work-image">
+                <div class="work-content">
+                    <h3>Early Lung Cancer Detection Using Deep Learning and Biomarker</h3>
+                    <p>This project introduces an AI-powered system for lung cancer detection and treatment. It combines medical imaging, biomarker analysis, and genetic profiling to improve diagnosis and treatment accuracy. Deep learning models (like CNNs and SVMs) analyze medical scans, while predictive AI helps doctors choose the best treatment. The system also monitors patients over time and ensures data privacy using federated learning. This innovative approach aims to improve survival rates and make advanced cancer detection more accessible and effective.</p>
+                    <a href="https://github.com/nandeesh71" class="work-link">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="work-item">
+                <img src="https://www.whoi.edu/wp-content/uploads/2019/02/withship_19424.jpg" alt="Project 3" class="work-image">
+                <div class="work-content">
+                    <h3>AI-Powered Weather Forecasting for Small-Scale Fishers</h3>
+                    <p>This project introduces an AI-driven early warning system for small-scale fishers, integrating IoT, AI, and real-time communication to predict dangerous weather. The system consists of solar-powered buoys collecting real-time weather data, machine learning models analysing weather trends, and SMS-based alerts warning fishers of rough sea conditions.
+                        By providing affordable, accurate, and localized weather predictions, this system helps fishers make safer decisions, prevent accidents, and protect their livelihoods. It is a cost-effective, scalable, and sustainable solution that can be implemented in coastal communities worldwide.
+                        </p>
+                    <a href="https://github.com/nandeesh71" class="work-link">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="work-item">
+                <img src="https://img.freepik.com/premium-photo/solar-panels-rooftop-modern-ecofriendly-building-created-with-generative-ai_419341-19185.jpg" alt="Project 4" class="work-image">
+                <div class="work-content">
+                    <h3>solar powered cold storage with brine circulation and pcm storage system</h3>
+                    <p>This solar-powered cold storage system provides an innovative solution for storing perishable goods in regions where electricity is limited or unreliable. This project aims to develop a solar-powered cold storage system utilizing brine circulation and Phase Change Materials (PCMs) for efficient and sustainable cooling. A brine circulation network efficiently distributes cooling to different storage rooms, with IoT-based automation adjusting temperature based on demand. This solution is ideal for farmers, small businesses, and remote areas.</p>
+                    <a href="https://github.com/nandeesh71" class="work-link">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="work-item">
+                <img src="https://psiborg.in/wp-content/uploads/2024/01/early-warning-of-landslides-thegem-blog-timeline-large.webp" alt="Project 5" class="work-image">
+                <div class="work-content">
+                    <h3>Intelligent  Ai Multi-Sensor Rescue System for Landslide Survivors</h3>
+                    <p>The Intelligent Multi-Sensor Rescue System is designed to detect and locate landslide survivors with high accuracy, minimizing false positives and enhancing rescue efficiency. By integrating advanced sensing technologies such as Ground-Penetrating Radar, Thermal Imaging, Acoustic & Seismic Sensors, and Gas Detection, the system identifies human presence beneath debris. Machine learning algorithms process real-time data to distinguish humans from other objects, ensuring precise detection. Deployable via drones. This innovative solution accelerates emergency response, increases survival rates, and revolutionizes disaster management with cutting-edge technology.</p>
+                    <a href="https://github.com/nandeesh71" class="work-link">View Project</a>
+                </div>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="work-item">
+                <img src="https://pubs.acs.org/cms/10.1021/acssuschemeng.2c05455/asset/images/medium/sc2c05455_0012.gif" alt="Project 6" class="work-image">
+                <div class="work-content">
+                    <h3>NanoGold: Sustainable Gold Recovery from E-Waste Using Nanotechnology</h3>
+                    <p>With the growing e-waste crisis, conventional recycling methods fail to recover gold efficiently while posing environmental and health risks. NanoGold leverages advanced nanotechnology and biological processes to extract gold with minimal pollution. Using specialized nanoparticles, it enhances metal recovery rates while reducing reliance on harmful chemicals. By incorporating plasma arc systems and microbial techniques, NanoGold offers a sustainable, cost-effective, and high-yield solution, supporting resource efficiency and a greener economy.</p>
+                    <a href="https://github.com/nandeesh71" class="work-link">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About section -->
+    <section id="about" class="about">
+        <img src="https://wallpaperaccess.com/full/10678165.png" alt="Your Profile" class="profile-image">
+        <h2>About Me</h2>
+        <p>I'm Nandeesh S, an AI enthusiast passionate about Machine Learning, Deep Learning, and Neural Networks.</p>
+        <p>Currently pursuing B.E Computer Science Engineering specialised in Artificial Intelligence (AI) & Machine Learning (ML) at Sri Sairam Engineering College, I aim to develop cutting-edge AI solutions, including my dream AI project Tracyeee a general AI.</p>
+        <p>I specialize in AI-driven solutions and have worked on projects like Echo Vision , Early lung cancer detection and more innovative AI solutions </p>
+        <!--<p>When I'm not designing or coding, you can find me [your interests/hobbies], which constantly inspire my creative work.</p>-->
+    </section>
+
+    <!-- Skills section -->
+    <section id="skills" class="skills">
+        <h2 class="section-title fade-up">My Skills</h2>
+    <div class="skills-grid">
+    <div class="skill-item fade-in"><div class="skill-icon circle">AI</div><span class="skill-name">Artificial Intelligence</span></div>
+    <div class="skill-item fade-in"><div class="skill-icon circle">ML</div><span class="skill-name">Machine Learning</span></div>
+    <div class="skill-item fade-in"><div class="skill-icon circle">DL</div><span class="skill-name">Deep Learning</span></div>
+    <div class="skill-item fade-in"><div class="skill-icon circle">NN</div><span class="skill-name">Neural Networking</span></div>
+    <div class="skill-item fade-in"><div class="skill-icon circle">PS</div><span class="skill-name">Problem Solving</span></div>
+    <div class="skill-item fade-in"><div class="skill-icon circle">TM</div><span class="skill-name">Team Management</span></div>
+    </div>
+    </section>
+
+    <!-- Contact section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Get in Touch</h2>
+        <p>Interested in working together? I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.</p>
+        <div class="contact-links">
+            <a href="mailto:nandeesh3573@gmail.com" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Email
+            </a>
+            <a href="https://linkedin.com/in/nandeesh2808" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                LinkedIn
+            </a>
+            <a href="#" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon">
+                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+                Twitter
+            </a>
+            <a href="https://github.com/nandeesh71" class="contact-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                GitHub
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Nandeesh. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Enhanced animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Elements to animate on scroll
+            const elements = document.querySelectorAll('.section-title, .work-item, .skill-item, .contact-link');
+            
+            // Staggered animation for work grid items
+            const workItems = document.querySelectorAll('.work-item');
+            workItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Staggered animation for skill items
+            const skillItems = document.querySelectorAll('.skill-item');
+            skillItems.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Contact link animations
+            const contactLinks = document.querySelectorAll('.contact-link');
+            contactLinks.forEach((item, index) => {
+                item.style.animationDelay = `${index * 0.1}s`;
+            });
+            
+            // Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Parallax effect for hero section
+            const hero = document.querySelector('.hero');
+            window.addEventListener('scroll', () => {
+                const scrollPosition = window.scrollY;
+                if (scrollPosition < window.innerHeight) {
+                    hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+                    hero.querySelector('h1').style.transform = `translateY(${scrollPosition * 0.2}px)`;
+                    hero.querySelector('h2').style.transform = `translateY(${scrollPosition * 0.1}px)`;
+                }
+            });
+            
+            // Cursor follower effect (Apple-like subtle interaction)
+            const cursor = document.createElement('div');
+            cursor.classList.add('cursor-follower');
+            document.body.appendChild(cursor);
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            
+            const links = document.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    cursor.classList.add('cursor-hover');
+                });
+                link.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('cursor-hover');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+.
