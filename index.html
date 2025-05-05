@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="icon.png">
     <title>Nandeesh71</title>
     <style>
         /* Apple-inspired design system */
@@ -207,6 +208,7 @@
 
 /* Soft Glow on Hover */
 .work-link:hover {
+    color: #000000;
     background: var(--apple-dark-blue);
     transform: scale(1.08);
     box-shadow: 0 5px 15px rgba(44, 100, 231, 0.3);
@@ -460,13 +462,16 @@
         
         .contact-link {
             opacity: 0;
-            animation: slideInRight
+            animation: slideInRight 0.8s ease forwards;
+        }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 42px;
             }
+        
+        
             
             .hero h2 {
                 font-size: 24px;
@@ -481,6 +486,315 @@
                 font-size: 36px;
             }
         }
+
+        /* Add this CSS to your style section */
+
+/* Project Detail Container */
+.project-detail-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--apple-white);
+    z-index: 1000;
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.project-detail-container.active {
+    display: block;
+    opacity: 1;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+/* Back Button */
+.back-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--apple-light-gray);
+    border: none;
+    border-radius: 24px;
+    padding: 10px 16px;
+    font-family: var(--font-apple);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--apple-black);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1010;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.back-button:hover {
+    background-color: var(--apple-blue);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 113, 227, 0.2);
+}
+
+.back-button:active {
+    transform: translateY(1px);
+}
+
+.back-button svg {
+    transition: transform 0.3s ease;
+}
+
+.back-button:hover svg {
+    transform: translateX(-3px);
+}
+
+/* Project Detail Styles */
+.project-detail {
+    display: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 40px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.project-detail.active {
+    display: block;
+}
+
+.project-detail-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 30px;
+}
+
+.project-detail-header h1 {
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--apple-black);
+    line-height: 1.2;
+    letter-spacing: -0.022em;
+    margin-bottom: 20px;
+}
+
+.project-detail-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.project-detail-image {
+    position: sticky;
+    top: 100px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.project-detail-image:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.project-detail-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transform: scale(1);
+    transition: transform 3s ease;
+}
+
+.project-detail-image:hover img {
+    transform: scale(1.05);
+}
+
+.project-detail-description {
+    animation: fadeUp 1s ease;
+}
+
+.project-detail-description h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--apple-black);
+    margin: 30px 0 15px;
+}
+
+.project-detail-description h2:first-child {
+    margin-top: 0;
+}
+
+.project-detail-description p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--apple-gray);
+    margin-bottom: 20px;
+}
+
+.project-detail-description ul {
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+}
+
+.project-detail-description ul li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--apple-gray);
+}
+
+.project-detail-description ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    background-color: var(--apple-blue);
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.project-detail-description ul li strong {
+    color: var(--apple-black);
+    font-weight: 600;
+}
+
+.project-links {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.project-detail-link {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--apple-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 24px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-detail-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.7s ease;
+}
+
+.project-detail-link:hover {
+    background-color: #8acdf1;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 113, 227, 0.3);
+}
+
+.project-detail-link:hover::before {
+    left: 100%;
+}
+
+/* Enhanced animations */
+@keyframes projectFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes projectDetailAppear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .project-detail-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-detail-image {
+        position: relative;
+        top: 0;
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-detail-header h1 {
+        font-size: 32px;
+    }
+    
+    .project-detail-description h2 {
+        font-size: 24px;
+    }
+    
+    .project-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+
+/* Slide transitions */
+.slide-in {
+    animation: slideIn 0.5s ease forwards;
+}
+
+.slide-out {
+    animation: slideOut 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* Smooth scrolling for the entire site */
+html {
+    scroll-behavior: smooth;
+}
+    
     </style>
 </head>
 <body>
@@ -615,12 +929,12 @@
                 </svg>
                 LinkedIn
             </a>
-            <a href="#" class="contact-link">
+           <!-- <a href="#" class="contact-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon">
                     <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
                 </svg>
                 Twitter
-            </a>
+            </a>-->
             <a href="https://github.com/nandeesh71" class="contact-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contact-icon">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -634,6 +948,281 @@
     <footer>
         <p>© 2025 Nandeesh. All rights reserved.</p>
     </footer>
+
+    <!-- This code should be added to your existing HTML file -->
+
+<!-- Project Detail Pages - Add this after the footer section but before closing body tag -->
+<div id="project-detail-container" class="project-detail-container">
+    <!-- Back button -->
+    <button id="back-to-home" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+        </svg>
+        Back to Home
+    </button>
+
+    <!-- Project 1 Detail -->
+    <div id="project-1" class="project-detail">
+        <div class="project-detail-header">
+            <h1>Echo Vision – Smart Assistive Technology for the Visually Impaired</h1>
+        </div>
+        <div class="project-detail-content">
+            <div class="project-detail-image">
+                <img src="https://th.bing.com/th/id/R.98337310ab3ffa7778e3b2f9ace2cc4d?rik=%2bDd1SWGkw3y1hg&riu=http%3a%2f%2fwww.atcrux.com%2fwp-content%2fuploads%2f2012%2f10%2fSensitive-vision-for-blind_1.jpg&ehk=YGXljXwgR7AU%2b%2f8Xd%2bVSrLKYurVXQF6ztW0mMcJOpvo%3d&risl=&pid=ImgRaw&r=0/400/320" alt="Echo Vision">
+            </div>
+            <div class="project-detail-description">
+                <h2>Overview</h2>
+                <p>Echo Vision is an AI-powered assistive device designed to empower visually impaired individuals with real-time navigation, facial recognition, and text-to-speech technology.</p>
+                
+                <h2>Challenge</h2>
+                <p>Visually impaired individuals face significant challenges navigating their environment independently and safely. Traditional assistive tools like white canes provide limited information about surroundings.</p>
+                
+                <h2>Solution</h2>
+                <p>By integrating depth cameras, health monitoring sensors, and AI/ML models, Echo Vision ensures safety, accessibility, and independence. The system provides comprehensive environmental awareness through various sensory inputs and AI processing.</p>
+                
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Real-time Navigation:</strong> Uses computer vision to identify obstacles, pathways, and safe routes</li>
+                    <li><strong>Facial Recognition:</strong> Identifies familiar faces and provides social context</li>
+                    <li><strong>Text-to-Speech:</strong> Reads text from signs, books, and digital displays</li>
+                    <li><strong>Object Recognition:</strong> Identifies everyday objects and their position</li>
+                    <li><strong>SOS Emergency Alerts:</strong> Detects falls or emergencies and sends alerts</li>
+                    <li><strong>Multi-language Support:</strong> Functions across multiple languages</li>
+                </ul>
+                
+                <h2>Technology Stack</h2>
+                <ul>
+                    <li>Deep Learning Neural Networks for image processing</li>
+                    <li>Computer Vision for object detection and recognition</li>
+                    <li>Natural Language Processing for text interpretation</li>
+                    <li>Cloud Computing for data processing and storage</li>
+                    <li>IoT sensors for environmental data collection</li>
+                </ul>
+                
+                <h2>Impact</h2>
+                <p>Echo Vision represents a transformative solution that significantly enhances the quality of life for visually impaired individuals, providing them with greater autonomy, safety, and access to information.</p>
+                
+                <div class="project-links">
+                    <a href="https://github.com/nandeesh71" class="project-detail-link">View on GitHub</a>
+                    <a href="#contact" class="project-detail-link contact-redirect">Contact for More Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 2 Detail -->
+    <div id="project-2" class="project-detail">
+        <div class="project-detail-header">
+            <h1>Early Lung Cancer Detection Using Deep Learning and Biomarker</h1>
+        </div>
+        <div class="project-detail-content">
+            <div class="project-detail-image">
+                <img src="https://repository-images.githubusercontent.com/474572546/d2b783f4-a08f-4b2a-b26b-4989404f9304" alt="Lung Cancer Detection">
+            </div>
+            <div class="project-detail-description">
+                <h2>Overview</h2>
+                <p>This project introduces an AI-powered system for lung cancer detection and treatment, combining medical imaging, biomarker analysis, and genetic profiling to improve diagnosis accuracy.</p>
+                
+                <h2>Challenge</h2>
+                <p>Lung cancer remains one of the deadliest forms of cancer due to late detection. Traditional screening methods often miss early-stage tumors or produce false positives, leading to delayed treatment or unnecessary procedures.</p>
+                
+                <h2>Solution</h2>
+                <p>Our system employs deep learning models like CNNs and SVMs to analyze medical scans with unprecedented accuracy. By combining imaging data with biomarker analysis, we can detect cancer at much earlier stages than conventional methods.</p>
+                
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Multi-modal Analysis:</strong> Combines CT scans, X-rays, and biomarker data</li>
+                    <li><strong>Early Detection:</strong> Identifies cancer signatures at Stage I with 94% accuracy</li>
+                    <li><strong>Treatment Recommendation:</strong> AI-assisted therapy suggestions based on patient data</li>
+                    <li><strong>Longitudinal Monitoring:</strong> Tracks disease progression over time</li>
+                    <li><strong>Privacy-Preserving:</strong> Uses federated learning to maintain data privacy</li>
+                </ul>
+                
+                <h2>Technology Stack</h2>
+                <ul>
+                    <li>Convolutional Neural Networks for image analysis</li>
+                    <li>Support Vector Machines for classification</li>
+                    <li>Biomarker analysis algorithms</li>
+                    <li>Federated learning framework</li>
+                    <li>HIPAA-compliant data storage</li>
+                </ul>
+                
+                <h2>Impact</h2>
+                <p>This system has the potential to dramatically improve lung cancer survival rates by enabling earlier detection and more personalized treatment approaches, making advanced cancer detection more accessible to healthcare providers worldwide.</p>
+                
+                <div class="project-links">
+                    <a href="https://github.com/nandeesh71" class="project-detail-link">View on GitHub</a>
+                    <a href="#contact" class="project-detail-link contact-redirect">Contact for More Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 3 Detail -->
+    <div id="project-3" class="project-detail">
+        <div class="project-detail-header">
+            <h1>AI-Powered Weather Forecasting for Small-Scale Fishers</h1>
+        </div>
+        <div class="project-detail-content">
+            <div class="project-detail-image">
+                <img src="https://www.whoi.edu/wp-content/uploads/2019/02/withship_19424.jpg" alt="Weather Forecasting System">
+            </div>
+            <div class="project-detail-description">
+                <h2>Overview</h2>
+                <p>This AI-driven early warning system helps small-scale fishers predict dangerous weather conditions, integrating IoT devices, machine learning, and real-time communication.</p>
+                
+                <h2>Challenge</h2>
+                <p>Small-scale fishers in coastal communities face significant risks due to unpredictable weather patterns and limited access to accurate forecasting technology, leading to loss of equipment, livelihoods, and sometimes lives.</p>
+                
+                <h2>Solution</h2>
+                <p>Our system combines solar-powered buoys collecting real-time oceanographic data with machine learning models that analyze weather patterns to deliver accurate, localized predictions via SMS alerts.</p>
+                
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Real-time Monitoring:</strong> Network of IoT buoys collecting environmental data</li>
+                    <li><strong>AI Prediction:</strong> Machine learning models analyzing weather patterns</li>
+                    <li><strong>Localized Forecasting:</strong> Microclimate-specific predictions</li>
+                    <li><strong>SMS Alerts:</strong> Simple communication system accessible without smartphones</li>
+                    <li><strong>Solar-Powered:</strong> Sustainable energy source for continuous operation</li>
+                    <li><strong>Community Dashboard:</strong> Web interface for detailed information</li>
+                </ul>
+                
+                <h2>Technology Stack</h2>
+                <ul>
+                    <li>IoT sensors for data collection</li>
+                    <li>LSTM neural networks for time-series prediction</li>
+                    <li>Weather pattern analysis algorithms</li>
+                    <li>SMS gateway integration</li>
+                    <li>Solar power management system</li>
+                </ul>
+                
+                <h2>Impact</h2>
+                <p>This cost-effective, scalable, and sustainable solution has the potential to save lives and protect livelihoods in coastal communities worldwide by providing affordable, accurate, and localized weather predictions.</p>
+                
+                <div class="project-links">
+                    <a href="https://github.com/nandeesh71" class="project-detail-link">View on GitHub</a>
+                    <a href="#contact" class="project-detail-link contact-redirect">Contact for More Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add similar blocks for the remaining projects (4, 5, and 6) -->
+    <!-- Project 4 Detail -->
+    <div id="project-4" class="project-detail">
+        <!-- Content similar to above projects but for Project 4 -->
+        <div class="project-detail-header">
+            <h1>Solar Powered Cold Storage with Brine Circulation and PCM Storage System</h1>
+        </div>
+        <div class="project-detail-content">
+            <div class="project-detail-image">
+                <img src="https://img.freepik.com/premium-photo/solar-panels-rooftop-modern-ecofriendly-building-created-with-generative-ai_419341-19185.jpg" alt="Solar Powered Cold Storage">
+            </div>
+            <div class="project-detail-description">
+                <!-- Project 4 description content -->
+                <h2>Overview</h2>
+                <p>This solar-powered cold storage system provides an innovative solution for storing perishable goods in regions where electricity is limited or unreliable.</p>
+                
+                <h2>Challenge</h2>
+                <p>In many rural and developing regions, lack of reliable electricity prevents proper cold storage of agricultural produce and other perishables, leading to significant food waste and economic losses.</p>
+                
+                <h2>Solution</h2>
+                <p>Our system combines solar power with phase change materials (PCMs) and brine circulation to create an efficient, sustainable cooling solution that works even when sunlight is unavailable.</p>
+                
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Solar Powering:</strong> Primary energy source from photovoltaic panels</li>
+                    <li><strong>Thermal Energy Storage:</strong> PCM technology stores cooling capacity</li>
+                    <li><strong>Brine Circulation:</strong> Efficiently distributes cooling to storage rooms</li>
+                    <li><strong>IoT Monitoring:</strong> Smart sensors track temperature and performance</li>
+                    <li><strong>Demand-Based Cooling:</strong> Adjusts cooling based on content requirements</li>
+                    <li><strong>Modular Design:</strong> Scalable to different capacity needs</li>
+                </ul>
+                
+                <div class="project-links">
+                    <a href="https://github.com/nandeesh71" class="project-detail-link">View on GitHub</a>
+                    <a href="#contact" class="project-detail-link contact-redirect">Contact for More Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 5 Detail -->
+    <div id="project-5" class="project-detail">
+        <!-- Content for Project 5 -->
+        <div class="project-detail-header">
+            <h1>Intelligent AI Multi-Sensor Rescue System for Landslide Survivors</h1>
+        </div>
+        <div class="project-detail-content">
+            <div class="project-detail-image">
+                <img src="https://psiborg.in/wp-content/uploads/2024/01/early-warning-of-landslides-thegem-blog-timeline-large.webp" alt="Landslide Rescue System">
+            </div>
+            <div class="project-detail-description">
+                <!-- Project 5 description content -->
+                <h2>Overview</h2>
+                <p>The Intelligent Multi-Sensor Rescue System is designed to detect and locate landslide survivors with high accuracy, minimizing false positives and enhancing rescue efficiency.</p>
+                
+                <h2>Challenge</h2>
+                <p>Current search and rescue operations after landslides are often inefficient, time-consuming, and dangerous for rescue workers, with limited technology for accurately detecting human life under debris.</p>
+                
+                <h2>Solution</h2>
+                <p>Our system integrates multiple sensing technologies with machine learning algorithms to detect human presence beneath debris quickly and accurately, dramatically improving rescue operations.</p>
+                
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Multi-Sensor Integration:</strong> Combines GPR, thermal imaging, acoustic and seismic sensors</li>
+                    <li><strong>AI Signal Processing:</strong> Machine learning algorithms distinguish humans from other objects</li>
+                    <li><strong>Drone Deployment:</strong> Rapid coverage of affected areas</li>
+                    <li><strong>3D Mapping:</strong> Creates precise location data for rescuers</li>
+                    <li><strong>Real-time Processing:</strong> Immediate results for faster response</li>
+                </ul>
+                
+                <div class="project-links">
+                    <a href="https://github.com/nandeesh71" class="project-detail-link">View on GitHub</a>
+                    <a href="#contact" class="project-detail-link contact-redirect">Contact for More Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 6 Detail -->
+    <div id="project-6" class="project-detail">
+        <!-- Content for Project 6 -->
+        <div class="project-detail-header">
+            <h1>NanoGold: Sustainable Gold Recovery from E-Waste Using Nanotechnology</h1>
+        </div>
+        <div class="project-detail-content">
+            <div class="project-detail-image">
+                <img src="https://pubs.acs.org/cms/10.1021/acssuschemeng.2c05455/asset/images/medium/sc2c05455_0012.gif" alt="NanoGold">
+            </div>
+            <div class="project-detail-description">
+                <!-- Project 6 description content -->
+                <h2>Overview</h2>
+                <p>NanoGold leverages advanced nanotechnology and biological processes to extract gold from electronic waste with minimal environmental impact.</p>
+                
+                <h2>Challenge</h2>
+                <p>Conventional gold recovery methods from e-waste use harmful chemicals like cyanide and mercury, creating significant environmental pollution and health hazards while achieving relatively low recovery rates.</p>
+                
+                <h2>Solution</h2>
+                <p>Our technology uses specialized nanoparticles and biological processes to selectively bind to gold in e-waste, enabling efficient extraction with minimal environmental impact.</p>
+                
+                <h2>Key Features</h2>
+                <ul>
+                    <li><strong>Nanoparticle Technology:</strong> Selective binding to precious metals</li>
+                    <li><strong>Bioleaching:</strong> Microbial techniques for metal extraction</li>
+                    <li><strong>Plasma Arc Systems:</strong> Clean processing of complex materials</li>
+                    <li><strong>Closed-Loop Process:</strong> Minimal waste generation</li>
+                    <li><strong>High Recovery Rate:</strong> 95%+ extraction efficiency</li>
+                </ul>
+                
+                <div class="project-links">
+                    <a href="https://github.com/nandeesh71" class="project-detail-link">View on GitHub</a>
+                    <a href="#contact" class="project-detail-link contact-redirect">Contact for More Info</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
     <script>
         // Enhanced animations
@@ -707,7 +1296,239 @@
                 });
             });
         });
+
+        // Add this JavaScript at the end of your script section
+
+// Project detail page functionality
+document.addEventListener('DOMContentLoaded', () => {
+    // Get DOM elements
+    const projectDetailContainer = document.getElementById('project-detail-container');
+    const projectDetails = document.querySelectorAll('.project-detail');
+    const backButton = document.getElementById('back-to-home');
+    const workLinks = document.querySelectorAll('.work-link');
+    const contactRedirectLinks = document.querySelectorAll('.contact-redirect');
+    
+    // Store the scroll position
+    let scrollPosition = 0;
+    
+    // Function to show project detail
+    function showProjectDetail(projectId) {
+        // Store current scroll position
+        scrollPosition = window.pageYOffset;
+        
+        // Hide all project details
+        projectDetails.forEach(detail => {
+            detail.classList.remove('active');
+        });
+        
+        // Show the selected project detail
+        const selectedProject = document.getElementById(`project-${projectId}`);
+        if (selectedProject) {
+            // Show container with fade effect
+            projectDetailContainer.style.display = 'block';
+            
+            // Trigger reflow
+            void projectDetailContainer.offsetWidth;
+            
+            // Add active classes
+            projectDetailContainer.classList.add('active');
+            selectedProject.classList.add('active');
+            
+            // Add slide-in animation
+            selectedProject.classList.add('slide-in');
+            
+            // Disable body scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Add page history
+            const projectTitle = selectedProject.querySelector('h1').textContent;
+            history.pushState({ projectId }, projectTitle, `#project-${projectId}`);
+            
+            // Add animation to elements
+            const elements = selectedProject.querySelectorAll('h2, p, ul, .project-links');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.animation = `projectDetailAppear 0.5s ease forwards ${0.2 + (index * 0.1)}s`;
+            });
+        }
+    }
+    
+    // Function to hide project detail
+    function hideProjectDetail() {
+        // Add slide-out animation
+        const activeProject = document.querySelector('.project-detail.active');
+        if (activeProject) {
+            activeProject.classList.add('slide-out');
+            
+            // Wait for animation to complete
+            setTimeout(() => {
+                projectDetailContainer.classList.remove('active');
+                activeProject.classList.remove('active', 'slide-in', 'slide-out');
+                document.body.style.overflow = '';
+                projectDetailContainer.style.display = 'none';
+                
+                // Restore scroll position
+                window.scrollTo(0, scrollPosition);
+                
+                // Update history
+                history.pushState({}, document.title, window.location.pathname);
+            }, 500);
+        }
+    }
+    
+    // Event listener for work links
+    workLinks.forEach((link, index) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectId = index + 1; // Projects are 1-indexed
+            showProjectDetail(projectId);
+        });
+    });
+    
+    // Event listener for back button
+    backButton.addEventListener('click', () => {
+        hideProjectDetail();
+    });
+    
+    // Event listener for contact redirect links
+    contactRedirectLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            hideProjectDetail();
+            
+            // Wait for the project detail to close before scrolling to contact
+            setTimeout(() => {
+                const contactSection = document.getElementById('contact');
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+            }, 600);
+        });
+    });
+    
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', (event) => {
+        if (event.state && event.state.projectId) {
+            showProjectDetail(event.state.projectId);
+        } else {
+            hideProjectDetail();
+        }
+    });
+
+    // Check if URL has a project hash on load
+    if (window.location.hash) {
+        const hash = window.location.hash;
+        const match = hash.match(/project-(\d+)/);
+        if (match && match[1]) {
+            // Delay to ensure DOM is fully loaded
+            setTimeout(() => {
+                showProjectDetail(match[1]);
+            }, 100);
+        }
+    }
+    
+    // Add hover effects for work items
+    const allWorkItems = document.querySelectorAll('.work-item');
+    allWorkItems.forEach((item, index) => {
+        item.addEventListener('click', (e) => {
+            // If clicked on the "View Project" link, let the link's event handler handle it
+            if (e.target.classList.contains('work-link') || e.target.closest('.work-link')) {
+                return;
+            }
+            
+            // Otherwise, trigger the project view
+            e.preventDefault();
+            const projectId = index + 1; // Projects are 1-indexed
+            showProjectDetail(projectId);
+        });
+        
+        // Add hover animation
+        item.addEventListener('mouseenter', () => {
+            item.classList.add('hover');
+        });
+        
+        item.addEventListener('mouseleave', () => {
+            item.classList.remove('hover');
+        });
+    });
+    
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (projectDetailContainer.classList.contains('active')) {
+            // ESC key to close
+            if (e.key === 'Escape') {
+                hideProjectDetail();
+            }
+            
+            // Arrow keys for navigation between projects
+            const activeProject = document.querySelector('.project-detail.active');
+            if (activeProject) {
+                const currentId = parseInt(activeProject.id.replace('project-', ''));
+                
+                // Right arrow - next project
+                if (e.key === 'ArrowRight' && currentId < projectDetails.length) {
+                    hideProjectDetail();
+                    setTimeout(() => {
+                        showProjectDetail(currentId + 1);
+                    }, 500);
+                }
+
+                // Left arrow - previous project
+                if (e.key === 'ArrowLeft' && currentId > 1) {
+                    hideProjectDetail();
+                    setTimeout(() => {
+                        showProjectDetail(currentId - 1);
+                    }, 500);
+                }
+            }
+        }
+    });
+    
+    // Add touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    projectDetailContainer.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, false);
+    
+    projectDetailContainer.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, false);
+    
+    function handleSwipe() {
+        const swipeThreshold = 100; // Minimum distance to be considered a swipe
+        
+        if (Math.abs(touchEndX - touchStartX) < swipeThreshold) {
+            return; // Not a significant swipe
+        }
+        
+        const activeProject = document.querySelector('.project-detail.active');
+        if (activeProject) {
+            const currentId = parseInt(activeProject.id.replace('project-', ''));
+            
+            if (touchEndX < touchStartX) {
+                // Swipe left - next project
+                if (currentId < projectDetails.length) {
+                    hideProjectDetail();
+                    setTimeout(() => {
+                        showProjectDetail(currentId + 1);
+                    }, 500);
+                }
+            } else {
+                // Swipe right - previous project or close
+                if (currentId > 1) {
+                    hideProjectDetail();
+                    setTimeout(() => {
+                        showProjectDetail(currentId - 1);
+                    }, 500);
+                } else {
+                    hideProjectDetail(); // Close if it's the first project
+                }
+            }
+        }
+    }
+});
+        
     </script>
 </body>
 </html>
-.
