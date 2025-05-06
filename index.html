@@ -518,7 +518,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background-color: var(--apple-light-blue);
+    background-color: var(--apple-blue);
     border: none;
     border-radius: 24px;
     padding: 10px 16px;
@@ -533,8 +533,8 @@
 }
 
 .back-button:hover {
-    background-color:var(--apple-black);
-    color:white ;
+    background-color:var(--apple-white);
+    color:black;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0, 113, 227, 0.2);
 }
@@ -707,8 +707,39 @@
 .project-detail-link:hover::before {
     left: 100%;
 }
+.project-detail-container.slide-out-left {
+    animation: slideOutLeft 0.5s ease forwards;
+}
+
+.project-detail-container.slide-out-right {
+    animation: slideOutRight 0.5s ease forwards;
+}
 
 /* Enhanced animations */
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+        
 @keyframes projectFadeIn {
     from {
         opacity: 0;
@@ -1354,12 +1385,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Function to hide project detail
-    function hideProjectDetail() {
-        // Add slide-out animation
-        const activeProject = document.querySelector('.project-detail.active');
-        if (activeProject) {
-            activeProject.classList.add('slide-out');
-            
+    function hideProjectDetail(direction = 'left') {
+    const activeProject = document.querySelector('.project-detail.active');
+    if (activeProject) {
+        activeProject.classList.remove('slide-out-left', 'slide-out-right'); // remove old direction
+        void activeProject.offsetWidth; // reflow
+        activeProject.classList.add(direction === 'right' ? 'slide-out-right' : 'slide-out-left');
+
+        setTimeout(() => {
+            projectDetailContainer.classList.remove('active');
+            activeProject.classList.remove('active', 'slide-in', 'slide-out-left', 'slide-out-right');
+            document.body.style.overflow = '';
+            projectDetailContainer.style.display = 'none';
+            window.scrollTo(0, scrollPosition);
+            history.pushState({}, document.title, window.location.pathname);
+        }, 500);
+    }
+    }
             // Wait for animation to complete
             setTimeout(() => {
                 projectDetailContainer.classList.remove('active');
@@ -1465,7 +1507,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Right arrow - next project
                 if (e.key === 'ArrowRight' && currentId < projectDetails.length) {
-                    hideProjectDetail();
+                    hideProjectDetail('left');
                     setTimeout(() => {
                         showProjectDetail(currentId + 1);
                     }, 500);
@@ -1473,7 +1515,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Left arrow - previous project
                 if (e.key === 'ArrowLeft' && currentId > 1) {
-                    hideProjectDetail();
+                    hideProjectDetail('right');
                     setTimeout(() => {
                         showProjectDetail(currentId - 1);
                     }, 500);
@@ -1509,7 +1551,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (touchEndX < touchStartX) {
                 // Swipe left - next project
                 if (currentId < projectDetails.length) {
-                    hideProjectDetail();
+                    hideProjectDetail('left');
                     setTimeout(() => {
                         showProjectDetail(currentId + 1);
                     }, 500);
@@ -1517,7 +1559,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 // Swipe right - previous project or close
                 if (currentId > 1) {
-                    hideProjectDetail();
+                    hideProjectDetail('right');
                     setTimeout(() => {
                         showProjectDetail(currentId - 1);
                     }, 500);
